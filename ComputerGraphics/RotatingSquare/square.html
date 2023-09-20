@@ -1,0 +1,59 @@
+<!--
+Group 4
+-----------------
+Michael Maciel
+Michael Gibson
+Nisapat Poolkwan
+Thomas Yeung
+------------------
+09/18/2023
+------------------
+//-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+        <title>HW3A</title>
+
+        <script id="vertex-shader" type="x-shader/x-vertex">
+            #version 300 es
+
+            in vec4 aPosition;
+            in vec3 aColor;
+            out vec3 vColor;
+            uniform float uDirectionX;
+            uniform float uDirectionY;
+
+            void main() {
+                vColor = aColor;
+                gl_Position.x = aPosition.x + uDirectionX;
+                gl_Position.y = aPosition.y + uDirectionY;
+                gl_Position.z = 0.0;
+                gl_Position.w = 1.0;
+            }
+        </script>
+
+        <script id="fragment-shader" type="x-shader/x-fragment">
+            #version 300 es
+
+            precision mediump float;
+            out vec4 fColor;
+            in vec3 vColor;
+
+            void main() {
+                fColor = vec4( vColor, 1.0 );
+            }
+        </script>
+
+        <script type="text/javascript" src="Common/initShaders.js"></script>
+        <script type="text/javascript" src="Common/MV.js"></script>
+        <script type="text/javascript" src="HW3A.js"></script>
+    </head>
+
+    <body>
+        <canvas id="gl-canvas" width="512" height="512">
+            Oops ... your browser doesn't support the HTML5 canvas element
+        </canvas>
+    </body>
+</html>
